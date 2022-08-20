@@ -84,6 +84,11 @@ export default
 			[BLOCKS.HEADING_5]: (node, key, create, next) => @renderTextBlock(node, key, create, next, 'h5')
 			[BLOCKS.HEADING_6]: (node, key, create, next) => @renderTextBlock(node, key, create, next, 'h6')
 			[BLOCKS.PARAGRAPH]: (node, key, create, next) => @renderTextBlock(node, key, create, next, 'p')
+			'table':(node, key, create, next) => create('table', { key }, next(node.content, key, create, next))
+			'table-row': (node, key, create, next) => create('tr', { key }, next(node.content, key, create, next))
+			'table-cell': (node, key, create, next) => create('td', { key }, next(node.content, key, create, next))
+			'table-header-cell': (node, key, create, next) => create('th', { key }, next(node.content, key, create, next))
+
 
 		# Render function for text blocks
 		renderTextBlock: (node, key, create, next, element) ->
